@@ -1,0 +1,12 @@
+{1234}{5678}Hello {y:i}world{y:b}!
+{5800}{7000}Second cue with a|line break
+{7100}{8500}{c:$0000FF}Colored line
+
+[INFORMATION]
+[title]Sample
+[author]Me
+
+00:00:09.00,00:00:12.00
+A SubViewer style cue line
+00:00:13.00,00:00:16.00
+Another SubViewer line

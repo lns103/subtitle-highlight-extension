@@ -1,0 +1,317 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Aegisub",
+  "scopeName": "source.ass",
+  "fileTypes": [
+    "ass",
+    "ssa"
+  ],
+  "patterns": [
+    {
+      "include": "#section"
+    },
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#events"
+    },
+    {
+      "include": "#keyValue"
+    },
+    {
+      "include": "#override"
+    }
+  ],
+  "repository": {
+    "section": {
+      "patterns": [
+        {
+          "match": "^[ \\t]*(\\[)([^\\]\\r\\n]+)(\\])",
+          "name": "meta.section.ass",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.section.begin.ass"
+            },
+            "2": {
+              "name": "entity.name.section.ass"
+            },
+            "3": {
+              "name": "punctuation.definition.section.end.ass"
+            }
+          }
+        }
+      ]
+    },
+    "comment": {
+      "patterns": [
+        {
+          "match": "^[ \\t]*(;).*$",
+          "name": "comment.line.semicolon.ass",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.comment.ass"
+            }
+          }
+        }
+      ]
+    },
+    "events": {
+      "patterns": [
+        {
+          "begin": "^[ \\t]*(Dialogue|Comment|Picture|Sound|Movie|Command|Style)(:)([ \\t]*)",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag.event.ass"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.ass"
+            }
+          },
+          "end": "(?=\\r?\\n|$)",
+          "patterns": [
+            {
+              "include": "#override"
+            },
+            {
+              "include": "#literal"
+            }
+          ]
+        },
+        {
+          "begin": "^[ \\t]*(Format)(:)([ \\t]*)",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag.format.ass"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.ass"
+            }
+          },
+          "end": "(?=\\r?\\n|$)",
+          "patterns": [
+            {
+              "match": "([A-Za-z]+)",
+              "name": "variable.parameter.field.ass"
+            },
+            {
+              "match": ",",
+              "name": "punctuation.separator.field.ass"
+            }
+          ]
+        }
+      ]
+    },
+    "keyValue": {
+      "patterns": [
+        {
+          "begin": "^[ \\t]*([A-Za-z][A-Za-z0-9]*)(:)([ \\t]*)",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag.ass"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.ass"
+            }
+          },
+          "end": "(?=\\r?\\n|$)",
+          "patterns": [
+            {
+              "include": "#literal"
+            }
+          ]
+        }
+      ]
+    },
+    "override": {
+      "patterns": [
+        {
+          "begin": "\\{",
+          "end": "\\}",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.tag.begin.ass"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.tag.end.ass"
+            }
+          },
+          "name": "meta.override.ass",
+          "patterns": [
+            {
+              "include": "#tags"
+            }
+          ]
+        }
+      ]
+    },
+    "tags": {
+      "patterns": [
+        {
+          "begin": "(?i)(\\\\)(t)(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.ass"
+            },
+            "2": {
+              "name": "support.function.transform.ass"
+            },
+            "3": {
+              "name": "punctuation.definition.arguments.begin.ass"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.arguments.end.ass"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#tags"
+            },
+            {
+              "include": "#tagArguments"
+            }
+          ]
+        },
+        {
+          "begin": "(?i)(\\\\)(clip|iclip|pos|move|org|fad|fade|distort|jitter|scroll)(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.ass"
+            },
+            "2": {
+              "name": "support.function.tag.ass"
+            },
+            "3": {
+              "name": "punctuation.definition.arguments.begin.ass"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.arguments.end.ass"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#tagArguments"
+            }
+          ]
+        },
+        {
+          "match": "(?i)(\\\\)(1c|2c|3c|4c|c|1a|2a|3a|4a|alpha)(&H?[0-9A-Fa-f]+&?)",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.tag.ass"
+            },
+            "2": {
+              "name": "support.function.tag.ass"
+            },
+            "3": {
+              "name": "constant.other.color.ass"
+            }
+          }
+        },
+        {
+          "match": "(?i)(\\\\)(fn)([^{}\\\\\\r\\n]*)",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.tag.ass"
+            },
+            "2": {
+              "name": "support.function.font.ass"
+            },
+            "3": {
+              "name": "variable.parameter.style.ass"
+            }
+          }
+        },
+        {
+          "match": "(?i)(\\\\)(r)([^{}\\\\\\r\\n]*)",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.tag.ass"
+            },
+            "2": {
+              "name": "support.function.reset.ass"
+            },
+            "3": {
+              "name": "variable.parameter.style.ass"
+            }
+          }
+        },
+        {
+          "match": "(?i)(\\\\)(xbord|ybord|xshad|yshad|blur|bord|shad|fscx|fscy|fsp|fsc|frz|frx|fry|fax|fay|faz|be|an|kf|ko|fs|fr|fe|s|u|i|b|k|q|p|a)(-?[0-9]*\\.?[0-9]+)?(?![a-zA-Z])",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.tag.ass"
+            },
+            "2": {
+              "name": "support.function.tag.ass"
+            },
+            "3": {
+              "name": "constant.numeric.tag.ass"
+            }
+          }
+        },
+        {
+          "match": "(\\\\)[a-zA-Z]+",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.tag.ass"
+            }
+          },
+          "name": "support.function.tag.ass"
+        }
+      ]
+    },
+    "tagArguments": {
+      "patterns": [
+        {
+          "match": ",",
+          "name": "punctuation.separator.arguments.ass"
+        },
+        {
+          "match": "(?i)&H?[0-9A-Fa-f]+&?",
+          "name": "constant.other.color.ass"
+        },
+        {
+          "match": "(-?[0-9]+\\.?[0-9]*|\\.[0-9]+)",
+          "name": "constant.numeric.ass"
+        }
+      ]
+    },
+    "literal": {
+      "patterns": [
+        {
+          "match": ",",
+          "name": "punctuation.separator.field.ass"
+        },
+        {
+          "match": "\\\\[Nnh]",
+          "name": "constant.character.escape.ass"
+        },
+        {
+          "match": "\\d{1,2}:[0-5][0-9]:[0-5][0-9][.:]\\d{2}",
+          "name": "constant.numeric.time.ass"
+        },
+        {
+          "match": "(?i)&H[0-9A-Fa-f]{1,8}&?",
+          "name": "constant.other.color.ass"
+        },
+        {
+          "match": "(-?[0-9]+\\.?[0-9]*|\\.[0-9]+)",
+          "name": "constant.numeric.ass"
+        },
+        {
+          "match": "[^,{}\\\\\\r\\n]+",
+          "name": "string.unquoted.ass"
+        }
+      ]
+    }
+  }
+}

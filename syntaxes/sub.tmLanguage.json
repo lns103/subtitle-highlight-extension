@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "MicroDVD",
+  "scopeName": "source.microdvd",
+  "fileTypes": [
+    "sub"
+  ],
+  "patterns": [
+    {
+      "begin": "^[ \\t]*(\\{)([0-9]+)(\\})(\\{)([0-9]+)(\\})",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.frame.begin.microdvd"
+        },
+        "2": {
+          "name": "constant.numeric.frame.microdvd"
+        },
+        "3": {
+          "name": "punctuation.definition.frame.end.microdvd"
+        },
+        "4": {
+          "name": "punctuation.definition.frame.begin.microdvd"
+        },
+        "5": {
+          "name": "constant.numeric.frame.microdvd"
+        },
+        "6": {
+          "name": "punctuation.definition.frame.end.microdvd"
+        }
+      },
+      "end": "$",
+      "name": "meta.cue.microdvd",
+      "patterns": [
+        {
+          "match": "\\{[a-zA-Z][^}\\r\\n]*\\}",
+          "name": "support.function.style.microdvd"
+        },
+        {
+          "match": "\\|",
+          "name": "constant.character.escape.microdvd"
+        },
+        {
+          "match": "[^|{}\\r\\n]+",
+          "name": "string.literal.microdvd"
+        }
+      ]
+    },
+    {
+      "match": "^[ \\t]*(\\[[^\\]\\r\\n]*\\])",
+      "captures": {
+        "1": {
+          "name": "entity.name.tag.metadata.microdvd"
+        }
+      }
+    },
+    {
+      "match": "^[ \\t]*([0-9]{1,2}:[0-9]{2}:[0-9]{2}\\.[0-9]{2})[ \\t]*,[ \\t]*([0-9]{1,2}:[0-9]{2}:[0-9]{2}\\.[0-9]{2})",
+      "captures": {
+        "1": {
+          "name": "constant.other.timestamp.subviewer"
+        },
+        "2": {
+          "name": "constant.other.timestamp.subviewer"
+        }
+      }
+    },
+    {
+      "match": "^[ \\t]*([0-9]{1,2}:[0-9]{2}:[0-9]{2})[ \\t]*,[ \\t]*([0-9]{1,2}:[0-9]{2}:[0-9]{2})",
+      "captures": {
+        "1": {
+          "name": "constant.other.timestamp.subviewer"
+        },
+        "2": {
+          "name": "constant.other.timestamp.subviewer"
+        }
+      }
+    },
+    {
+      "match": "^[^\\r\\n]+$",
+      "name": "string.literal.subviewer"
+    }
+  ]
+}

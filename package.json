@@ -1,0 +1,172 @@
+{
+  "name": "ass-subtitles",
+  "displayName": "ASS/SSA Subtitle Support",
+  "description": "Syntax highlighting and smart enhancements for ASS/SSA, SRT and LRC subtitles.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GalAster/vscode-subtitles.git"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "ass",
+    "ssa",
+    "srt",
+    "lrc",
+    "subtitle",
+    "lyric",
+    "aegisub"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onLanguage:ass",
+    "onLanguage:srt",
+    "onLanguage:lrc",
+    "onLanguage:vtt",
+    "onLanguage:sub"
+  ],
+  "scripts": {
+    "build": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "typecheck": "tsc --noEmit",
+    "test:grammar": "node scripts/test-grammar.js",
+    "vscode:prepublish": "npm run build",
+    "package": "vsce package"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "ass",
+        "aliases": [
+          "SSA",
+          "ASS",
+          "Aegisub"
+        ],
+        "extensions": [
+          ".ass",
+          ".ssa"
+        ],
+        "configuration": "./language-configuration/ass.language-configuration.json"
+      },
+      {
+        "id": "srt",
+        "aliases": [
+          "SubRip"
+        ],
+        "extensions": [
+          ".srt"
+        ],
+        "mimetypes": [
+          "text/x-srt"
+        ],
+        "configuration": "./language-configuration/subtitle.language-configuration.json"
+      },
+      {
+        "id": "lrc",
+        "aliases": [
+          "Lyric"
+        ],
+        "extensions": [
+          ".lrc"
+        ],
+        "mimetypes": [
+          "text/x-lrc"
+        ],
+        "configuration": "./language-configuration/subtitle.language-configuration.json"
+      },
+      {
+        "id": "vtt",
+        "aliases": [
+          "WebVTT",
+          "VTT"
+        ],
+        "extensions": [
+          ".vtt"
+        ],
+        "mimetypes": [
+          "text/vtt"
+        ],
+        "configuration": "./language-configuration/subtitle.language-configuration.json"
+      },
+      {
+        "id": "sub",
+        "aliases": [
+          "MicroDVD",
+          "SubViewer"
+        ],
+        "extensions": [
+          ".sub"
+        ],
+        "configuration": "./language-configuration/subtitle.language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ass",
+        "scopeName": "source.ass",
+        "path": "./syntaxes/ass.tmLanguage.json"
+      },
+      {
+        "language": "srt",
+        "scopeName": "source.subrip",
+        "path": "./syntaxes/srt.tmLanguage.json"
+      },
+      {
+        "language": "lrc",
+        "scopeName": "source.lyric",
+        "path": "./syntaxes/lrc.tmLanguage.json"
+      },
+      {
+        "language": "vtt",
+        "scopeName": "source.webvtt",
+        "path": "./syntaxes/vtt.tmLanguage.json"
+      },
+      {
+        "language": "sub",
+        "scopeName": "source.microdvd",
+        "path": "./syntaxes/sub.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "title": "ASS/SSA Subtitle Support",
+      "properties": {
+        "assSubtitles.colorDecorators.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show color swatches for ASS colors (&HAABBGGRR and &HBBGGRR&)."
+        },
+        "assSubtitles.folding.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable folding of ASS/SSA sections."
+        },
+        "assSubtitles.colorFieldHighlight.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight ASS color fields (tags and color values) with a dedicated color."
+        },
+        "assSubtitles.colorFieldHighlight.color": {
+          "type": "string",
+          "default": "#C586C0",
+          "description": "Foreground color used for the Hxxx part of ASS color values."
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.75.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.4.0",
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.3.2"
+  }
+}

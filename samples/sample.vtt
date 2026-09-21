@@ -1,0 +1,18 @@
+WEBVTT
+Kind: captions
+Language: en
+
+NOTE This is a comment block
+spanning two lines
+
+STYLE
+::cue { color: yellow }
+
+1
+00:00:01.000 --> 00:00:04.000 align:start position:10%
+Hello <b>world</b> and <c.yellow>color</c>!
+
+2
+00:00:05.000 --> 00:00:08.000
+Fish &amp; Chips
+Second line

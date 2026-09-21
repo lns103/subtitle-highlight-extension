@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Lyric",
+  "scopeName": "source.lyric",
+  "fileTypes": [
+    "lrc",
+    "lyric"
+  ],
+  "patterns": [
+    {
+      "match": "^[ \\t]*(\\[)([0-5]?[0-9]:[0-5][0-9](?:[.:][0-9]{1,4})?)(\\])",
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.timestamp.begin.lyric"
+        },
+        "2": {
+          "name": "constant.other.timestamp.lyric"
+        },
+        "3": {
+          "name": "punctuation.definition.timestamp.end.lyric"
+        }
+      }
+    },
+    {
+      "match": "^[ \\t]*(\\[)([a-zA-Z][a-zA-Z0-9]*)(:)([^\\]]*)(\\])",
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.meta.begin.lyric"
+        },
+        "2": {
+          "name": "entity.name.tag.meta.lyric"
+        },
+        "3": {
+          "name": "punctuation.separator.key-value.lyric"
+        },
+        "4": {
+          "name": "string.unquoted.meta.lyric"
+        },
+        "5": {
+          "name": "punctuation.definition.meta.end.lyric"
+        }
+      }
+    },
+    {
+      "match": "^[ \\t]*([^\\[\\r\\n].*)$",
+      "name": "string.literal.lyric"
+    }
+  ]
+}

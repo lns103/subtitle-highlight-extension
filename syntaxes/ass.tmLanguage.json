@@ -312,11 +312,15 @@
           "name": "constant.character.escape.ass"
         },
         {
-          "match": "\\d{1,2}:[0-5][0-9]:[0-5][0-9][.:]\\d{2}",
-          "name": "constant.numeric.time.ass"
+          "match": "[ \\t]*(\\d{1,2}:[0-5][0-9]:[0-5][0-9][.:]\\d{2})",
+          "captures": {
+            "1": {
+              "name": "constant.numeric.time.ass"
+            }
+          }
         },
         {
-          "match": "(?i)(&)(H[0-9A-Fa-f]{1,8})(&?)",
+          "match": "(?i)[ \\t]*(&)(H[0-9A-Fa-f]{1,8})(&?)",
           "captures": {
             "1": {
               "name": "constant.other.color.ass"
@@ -330,8 +334,12 @@
           }
         },
         {
-          "match": "(-?[0-9]+\\.?[0-9]*|\\.[0-9]+)",
-          "name": "constant.numeric.ass"
+          "match": "[ \\t]*(-?[0-9]+\\.?[0-9]*|\\.[0-9]+)",
+          "captures": {
+            "1": {
+              "name": "constant.numeric.ass"
+            }
+          }
         },
         {
           "match": "[^,{}\\\\\\r\\n]+",

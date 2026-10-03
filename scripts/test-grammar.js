@@ -53,6 +53,8 @@ const expectations = {
         ['Dialogue: 0,0:00:01.00,0:00:04.00,Default,,0,0,0,,{\\fnArial Narrow\\b1}x', 'variable.parameter.style.ass', 'Arial Narrow'],
         ['Dialogue: 0,0:00:01.00,0:00:04.00,Default,,0,0,0,,{\\fn微软雅黑}x', 'variable.parameter.style.ass', '微软雅黑'],
         ['Style: Default,Arial,48,&H00FFFFFF,&H64000000,0', 'keyword.control.ass', 'H00FFFFFF'],
+        ['Style: Translate, 黑体, 60, &H00EEEEEE, &HF0000000, &H00000000, &H32000000, 0, 0, 0, 0, 100, 100, 0, 0, 1, 1.5, 0, 2, 18, 18, 18, 1', 'keyword.control.ass', 'H00EEEEEE'],
+        ['Style: Translate, 黑体, 60, &H00EEEEEE, &HF0000000, &H00000000, &H32000000, 0, 0, 0, 0, 100, 100, 0, 0, 1, 1.5, 0, 2, 18, 18, 18, 1', 'constant.numeric.ass', '60'],
     ],
     'source.subrip': [
         ['1', 'constant.numeric.index.subrip'],

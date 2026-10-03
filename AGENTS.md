@@ -12,7 +12,7 @@ npm run watch         # rebuild on change
 npm run typecheck     # tsc --noEmit
 npm run test:grammar  # tokenize fixtures with vscode-textmate/oniguruma
 npm run package       # vsce package (may fail if vsce not global)
-npx --yes @vscode/vsce package --no-dependencies --out ass-subtitles-0.1.0.vsix  # verified packaging
+npx --yes @vscode/vsce package --no-dependencies --out ass-subtitles-0.2.0.vsix  # verified packaging
 ```
 
 Order that matters: `typecheck` + `build` + `test:grammar` before packaging.

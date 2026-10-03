@@ -5,6 +5,8 @@
 - The `Hxxx` part of ASS color values is now scoped `keyword.control.ass`, so it follows the theme's control-keyword color (same as TypeScript `import`/`return`) instead of a hardcoded purple.
 - Removed the fixed-color `colorFieldHighlight` decoration and its `assSubtitles.colorFieldHighlight.enabled` / `assSubtitles.colorFieldHighlight.color` settings.
 - Event/Style fields with spaces after commas now highlight correctly: colors, times and numbers are recognized after the leading whitespace.
+- SRT `-->` now uses the same `constant.other.timestamp.subrip` scope as the timestamps.
+- Removed the `<`/`>` bracket pair from the shared subtitle language configuration so the `>` in timing arrows is no longer bracket-colorized.
 
 ## 0.1.0
 

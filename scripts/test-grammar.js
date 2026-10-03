@@ -59,6 +59,7 @@ const expectations = {
     'source.subrip': [
         ['1', 'constant.numeric.index.subrip'],
         ['00:00:01,000 --> 00:00:04,000', 'constant.other.timestamp.subrip'],
+        ['00:00:01,000 --> 00:00:04,000', 'constant.other.timestamp.subrip', '-->'],
         ['Hello <b>world</b>!', 'entity.name.tag.subrip'],
         ['{\\an8}Top aligned line', 'constant.other.ass-tag.subrip'],
     ],

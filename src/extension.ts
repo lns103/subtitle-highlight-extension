@@ -1,6 +1,5 @@
 import * as vscode from 'vscode'
 import { AssColorProvider } from './colorProvider'
-import { AssColorFieldHighlighter } from './colorFieldHighlighter'
 import { AssFoldingProvider } from './foldingProvider'
 
 export function activate(context: vscode.ExtensionContext): void {
@@ -13,7 +12,6 @@ export function activate(context: vscode.ExtensionContext): void {
             { language: 'ass' },
             new AssFoldingProvider(),
         ),
-        new AssColorFieldHighlighter(),
     )
 }
 

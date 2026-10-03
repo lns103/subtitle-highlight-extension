@@ -1,5 +1,10 @@
 # Change Log
 
+## Unreleased
+
+- The `Hxxx` part of ASS color values is now scoped `keyword.control.ass`, so it follows the theme's control-keyword color (same as TypeScript `import`/`return`) instead of a hardcoded purple.
+- Removed the fixed-color `colorFieldHighlight` decoration and its `assSubtitles.colorFieldHighlight.enabled` / `assSubtitles.colorFieldHighlight.color` settings.
+
 ## 0.1.0
 
 - Initial release.

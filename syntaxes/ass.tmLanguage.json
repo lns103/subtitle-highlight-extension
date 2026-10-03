@@ -203,7 +203,7 @@
           ]
         },
         {
-          "match": "(?i)(\\\\)(1c|2c|3c|4c|c|1a|2a|3a|4a|alpha)(&H?[0-9A-Fa-f]+&?)",
+          "match": "(?i)(\\\\)(1c|2c|3c|4c|c|1a|2a|3a|4a|alpha)(&)(H?[0-9A-Fa-f]+)(&?)",
           "captures": {
             "1": {
               "name": "punctuation.definition.tag.ass"
@@ -212,6 +212,12 @@
               "name": "support.function.tag.ass"
             },
             "3": {
+              "name": "constant.other.color.ass"
+            },
+            "4": {
+              "name": "keyword.control.ass"
+            },
+            "5": {
               "name": "constant.other.color.ass"
             }
           }
@@ -276,8 +282,18 @@
           "name": "punctuation.separator.arguments.ass"
         },
         {
-          "match": "(?i)&H?[0-9A-Fa-f]+&?",
-          "name": "constant.other.color.ass"
+          "match": "(?i)(&)(H?[0-9A-Fa-f]+)(&?)",
+          "captures": {
+            "1": {
+              "name": "constant.other.color.ass"
+            },
+            "2": {
+              "name": "keyword.control.ass"
+            },
+            "3": {
+              "name": "constant.other.color.ass"
+            }
+          }
         },
         {
           "match": "(-?[0-9]+\\.?[0-9]*|\\.[0-9]+)",
@@ -300,8 +316,18 @@
           "name": "constant.numeric.time.ass"
         },
         {
-          "match": "(?i)&H[0-9A-Fa-f]{1,8}&?",
-          "name": "constant.other.color.ass"
+          "match": "(?i)(&)(H[0-9A-Fa-f]{1,8})(&?)",
+          "captures": {
+            "1": {
+              "name": "constant.other.color.ass"
+            },
+            "2": {
+              "name": "keyword.control.ass"
+            },
+            "3": {
+              "name": "constant.other.color.ass"
+            }
+          }
         },
         {
           "match": "(-?[0-9]+\\.?[0-9]*|\\.[0-9]+)",

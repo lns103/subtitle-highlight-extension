@@ -147,16 +147,6 @@
           "type": "boolean",
           "default": true,
           "description": "Enable folding of ASS/SSA sections."
-        },
-        "assSubtitles.colorFieldHighlight.enabled": {
-          "type": "boolean",
-          "default": true,
-          "description": "Highlight ASS color fields (tags and color values) with a dedicated color."
-        },
-        "assSubtitles.colorFieldHighlight.color": {
-          "type": "string",
-          "default": "#C586C0",
-          "description": "Foreground color used for the Hxxx part of ASS color values."
         }
       }
     }

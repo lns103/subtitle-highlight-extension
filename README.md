@@ -32,8 +32,10 @@ Supported extensions: `.ass`, `.ssa`, `.srt`, `.lrc`, `.vtt`, `.sub`.
 | --- | --- | --- |
 | `assSubtitles.colorDecorators.enabled` | `true` | Show color swatches for ASS colors. |
 | `assSubtitles.folding.enabled` | `true` | Enable folding of ASS/SSA sections. |
-| `assSubtitles.colorFieldHighlight.enabled` | `true` | Highlight the `Hxxx` part of ASS color values. |
-| `assSubtitles.colorFieldHighlight.color` | `#C586C0` | Foreground color used for the `Hxxx` part of color values. |
+
+The `Hxxx` part of ASS color values is scoped `keyword.control.ass`, so it follows the
+theme's control-keyword color (same as TypeScript `import`/`return`). No custom color
+setting is needed.
 
 ## Development
 

@@ -2,7 +2,7 @@
   "name": "ass-subtitles",
   "displayName": "ASS/SSA Subtitle Support",
   "description": "Syntax highlighting and smart enhancements for ASS/SSA, SRT and LRC subtitles.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "publisher": "local",
   "license": "MIT",
   "icon": "icon.png",

@@ -23,8 +23,9 @@ Order that matters: `typecheck` + `build` + `test:grammar` before packaging.
   edits take effect **without** a build. Only `src/` needs `npm run build`.
 - `src/extension.ts` registers providers: `AssColorProvider` (swatch) and
   `AssFoldingProvider`. Both are ASS-only; SRT/LRC/VTT/SUB get syntax highlighting only.
-- The `Hxxx` part of ASS color literals is scoped `keyword.control.ass`, so it follows
-  the theme's control-keyword color (same as TS `import`/`return`). No decoration is used.
+- The whole ASS color literal (`&Hxxx` plus any trailing `&`) is scoped
+  `keyword.control.ass`, so it follows the theme's control-keyword color (same as
+  TS `import`/`return`). No decoration is used.
 - Debug with F5 (`.vscode/launch.json`, preLaunchTask `npm: build`), then open `samples/`.
 
 ## Adding a language/grammar
@@ -49,8 +50,10 @@ Reuse `language-configuration/subtitle.language-configuration.json` for non-ASS 
 - Color literals are `&HAABBGGRR` (BGR order, and alpha is inverted: `00` = opaque,
   `FF` = transparent). Parsed in `src/colorProvider.ts`; 8-digit must match before
   6-digit (`{8}|{6}`) or `&H00FFFFFF` is misread.
-- Only the `Hxxx` part of color values gets `keyword.control.ass`; keep `\`, `&`, and
-  tag names in their normal theme colors (the `&` stays `constant.other.color.ass`).
+- The whole color value including its `&` delimiters gets `keyword.control.ass`;
+  keep `\` and tag names in their normal theme colors.
+- `src/colorProvider.ts` reports the range from `&H` through the hex digits, so the
+  color swatch renders before the leading `&`.
 
 ## Commit messages
 

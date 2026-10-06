@@ -42,10 +42,10 @@ export class AssColorProvider implements vscode.DocumentColorProvider {
             let match: RegExpExecArray | null
             while ((match = COLOR_RE.exec(text)) !== null) {
                 const hex = match[1]
-                const start = match.index + match[0].length - hex.length
+                const start = match.index
                 const range = new vscode.Range(
                     new vscode.Position(i, start),
-                    new vscode.Position(i, start + hex.length),
+                    new vscode.Position(i, start + match[0].length),
                 )
                 result.push(
                     new vscode.ColorInformation(range, parseAssColor(hex)),
@@ -60,8 +60,8 @@ export class AssColorProvider implements vscode.DocumentColorProvider {
         context: { document: vscode.TextDocument; range: vscode.Range },
     ): vscode.ColorPresentation[] {
         const original = context.document.getText(context.range)
-        const withAlpha = original.length === 8
-        const text = formatAssColor(color, withAlpha)
+        const hasAlpha = original.length - 2 === 8
+        const text = `&H${formatAssColor(color, hasAlpha)}`
         const presentation = new vscode.ColorPresentation(text)
         presentation.textEdit = new vscode.TextEdit(context.range, text)
         return [presentation]

@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.2.1
+
+- The entire ASS color literal (`&Hxxx` plus the leading and trailing `&`) now shares the `keyword.control.ass` scope, so `&` and the color value highlight as one.
+- The color swatch for ASS color literals now renders before the leading `&` instead of between `&H` and the hex digits.
+
 ## 0.2.0
 
 - The `Hxxx` part of ASS color values is now scoped `keyword.control.ass`, so it follows the theme's control-keyword color (same as TypeScript `import`/`return`) instead of a hardcoded purple.

@@ -212,13 +212,13 @@
               "name": "support.function.tag.ass"
             },
             "3": {
-              "name": "constant.other.color.ass"
+              "name": "keyword.control.ass"
             },
             "4": {
               "name": "keyword.control.ass"
             },
             "5": {
-              "name": "constant.other.color.ass"
+              "name": "keyword.control.ass"
             }
           }
         },
@@ -285,13 +285,13 @@
           "match": "(?i)(&)(H?[0-9A-Fa-f]+)(&?)",
           "captures": {
             "1": {
-              "name": "constant.other.color.ass"
+              "name": "keyword.control.ass"
             },
             "2": {
               "name": "keyword.control.ass"
             },
             "3": {
-              "name": "constant.other.color.ass"
+              "name": "keyword.control.ass"
             }
           }
         },
@@ -323,13 +323,13 @@
           "match": "(?i)[ \\t]*(&)(H[0-9A-Fa-f]{1,8})(&?)",
           "captures": {
             "1": {
-              "name": "constant.other.color.ass"
+              "name": "keyword.control.ass"
             },
             "2": {
               "name": "keyword.control.ass"
             },
             "3": {
-              "name": "constant.other.color.ass"
+              "name": "keyword.control.ass"
             }
           }
         },
